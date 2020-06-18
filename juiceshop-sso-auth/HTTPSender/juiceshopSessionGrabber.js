@@ -27,7 +27,7 @@
 var COOKIE_TYPE   = org.parosproxy.paros.network.HtmlParameter.Type.cookie;
 var HtmlParameter = Java.type('org.parosproxy.paros.network.HtmlParameter')
 var ScriptVars    = Java.type('org.zaproxy.zap.extension.script.ScriptVars');
-var myUrl = 'https://juice-shop.herokuapp.com/rest/user/login';
+var myUrl = 'http://192.168.1.14:3000/rest/user/login';
 
 function sendingRequest(msg, initiator, helper) {
 	// Debugging can be done using println like this
@@ -46,7 +46,7 @@ function responseReceived(msg, initiator, helper) {
 			print('Grabber: got token ' + token);
     			ScriptVars.setGlobalVar("juiceshop.token", token);
 		} catch(err) {
-			print("Errorrrrrrrrr: " + err);
+			print("Error " + err);
 		}
 	} else {
 		print("json is null");
