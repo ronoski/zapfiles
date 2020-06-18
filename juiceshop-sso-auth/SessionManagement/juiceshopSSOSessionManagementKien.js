@@ -52,4 +52,3 @@ function getRequiredParamsNames() {
 function getOptionalParamsNames() {
 	return [];
 }
-
