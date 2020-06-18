@@ -1,4 +1,3 @@
-
 var By = Java.type('org.openqa.selenium.By');
 var Thread = Java.type('java.lang.Thread');
 
@@ -6,7 +5,7 @@ var HttpRequestHeader = Java.type('org.parosproxy.paros.network.HttpRequestHeade
 var HttpHeader = Java.type('org.parosproxy.paros.network.HttpHeader');
 var URI = Java.type('org.apache.commons.httpclient.URI');
 var ScriptVars    = Java.type('org.zaproxy.zap.extension.script.ScriptVars');
-var TimeUnit = Java.type('java.util.concurrent.TimeUnit');
+//var TimeUnit = Java.type('java.util.concurrent.TimeUnit');
 // The authenticate function will be called for authentications made via ZAP.
 
 // The authenticate function is called whenever ZAP requires to authenticate, for a Context for which this script
@@ -31,13 +30,14 @@ function authenticate(helper, paramsValues, credentials) {
 	count++;
 	ScriptVars.setGlobalVar("juiceshop.count", count);
 	print("count: " + count);
-     var juiceshop = 'https://juice-shop.herokuapp.com';
+     var juiceshop = 'http://192.168.1.14:3000/';
      var username = 'kien@kien.com';
      var password = 'kienpass';
      var extSel = org.parosproxy.paros.control.Control.getSingleton().getExtensionLoader().getExtension(org.zaproxy.zap.extension.selenium.ExtensionSelenium.class)
      var wd = extSel.getWebDriverProxyingViaZAP(1, "firefox");
-	wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	//wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
      wd.get(juiceshop);
+	Thread.sleep(2000);	
      wd.get(juiceshop + '#/login');
      wd.findElement(By.id("email")).sendKeys(username);
      wd.findElement(By.id("password")).sendKeys(password);
